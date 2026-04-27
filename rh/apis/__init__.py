@@ -1,0 +1,1 @@
+HTTP_GET_TIMEOUT: int = 60

@@ -58,6 +58,27 @@ wheels = [
 ]
 
 [[package]]
+name = "fastcore"
+version = "1.12.43"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/0a/16/df9963c3c6c1808458cbf2acce78add8c3b1ea52eec107e20a1682f699b3/fastcore-1.12.43.tar.gz", hash = "sha256:693314a8aeea4190a3501f319d31d9fd6373513cd29bd76e20d4c02f34ff8f82", size = 99921, upload-time = "2026-04-26T03:18:23.586Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/e2/c4/2690f419eee16f0e2372da4cf7856fec8f6b916ec5052b6d7f80afe0140c/fastcore-1.12.43-py3-none-any.whl", hash = "sha256:a6b4be5c13ec98d22a1062a696fc0e3c014690a4c79cd1b96a4d666de38ee448", size = 104620, upload-time = "2026-04-26T03:18:21.332Z" },
+]
+
+[[package]]
+name = "ghapi"
+version = "1.0.13"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "fastcore" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/62/09/1b88f97e8599cda096d42dac830bb2e28ddf202d71843f61bda52bbe99ce/ghapi-1.0.13.tar.gz", hash = "sha256:fb46f5e101efa33bd12a0ae7694de761eec5be1de90f48847699f1e00128f928", size = 72914, upload-time = "2026-02-28T02:21:01.892Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/67/ac/e1960ec21cfd5a0fd9b329822c04d0b5f91abb688c3b1acd7e8ff3390432/ghapi-1.0.13-py3-none-any.whl", hash = "sha256:49d7e336e5664e4d4f92b1d442dfe80f31ecccbee4370bd1d271bd63a1ccf18e", size = 71409, upload-time = "2026-02-28T02:21:00.457Z" },
+]
+
+[[package]]
 name = "greenlet"
 version = "3.5.0"
 source = { registry = "https://pypi.org/simple" }
@@ -152,6 +173,7 @@ name = "private-repo-hunter"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
+    { name = "ghapi" },
     { name = "pandas" },
     { name = "progress" },
     { name = "requests" },
@@ -160,6 +182,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "ghapi", specifier = ">=1.0.13" },
     { name = "pandas", specifier = ">=3.0.2" },
     { name = "progress", specifier = ">=1.6.1" },
     { name = "requests", specifier = ">=2.33.1" },
