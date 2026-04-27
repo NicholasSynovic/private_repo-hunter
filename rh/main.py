@@ -1,3 +1,4 @@
+import argparse
 from pathlib import Path
 
 from pandas import DataFrame
@@ -6,8 +7,13 @@ from rh.datasets.joss import extract, load, transform
 from rh.db import DB
 
 
-def main():
-    db_path: Path = Path("rh.sqlite3").absolute()
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dataset", choices=("joss",), required=True)
+    parser.add_argument("--output", type=Path, default=Path("rh.sqlite3"))
+    args = parser.parse_args()
+
+    db_path: Path = args.output.absolute()
     db: DB = DB(db_path=db_path)
 
     issues: list[dict] = extract()
