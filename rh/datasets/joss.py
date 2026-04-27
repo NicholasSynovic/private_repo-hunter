@@ -1,7 +1,7 @@
 import json
 from typing import Any
 
-from fastcore.all import AttrDict, L, obj2dict
+from fastcore.all import AttrDict, obj2dict
 from pandas import DataFrame, Timestamp
 from progress.bar import Bar
 from pydantic import BaseModel
@@ -26,7 +26,10 @@ class Issue(BaseModel):
 
     @staticmethod
     def convert_datetime(dt: str) -> int:
-        return int(Timestamp(ts_input=dt).timestamp())
+        try:
+            return int(Timestamp(ts_input=dt).timestamp())
+        except TypeError:
+            return -1
 
     @staticmethod
     def convert_labels(labels: list[AttrDict]) -> str:
@@ -63,6 +66,7 @@ def transform(issues: list[dict]) -> DataFrame:
                 labels=Issue.convert_labels(issue["labels"]),
                 raw_json=Issue.convert_raw_json(raw_json=issue),
             )
+
             data.append(datum)
             bar.next()
 

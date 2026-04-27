@@ -20,7 +20,7 @@ class GitHub:
         pages = paged(
             self.gh.issues.list_for_repo,
             per_page=100,
-            max_pages=1,
+            max_pages=9999999999,
             state="all",
             sort="created",
             direction="asc",

@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from sqlalchemy import (Boolean, Column, Engine, ForeignKey, Integer, MetaData,
-                        String, Table, create_engine)
+from sqlalchemy import (Boolean, Column, Engine, Integer, MetaData, String,
+                        Table, create_engine)
 
 
 class DB:
