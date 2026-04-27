@@ -19,10 +19,11 @@ class GitHub:
         # Create the generator for all pages
         pages = paged(
             self.gh.issues.list_for_repo,
+            per_page=100,
+            max_pages=1,
             state="all",
             sort="created",
             direction="asc",
-            per_page=100,
         )
 
         # Flatten pages and convert AttrDicts to standard dicts

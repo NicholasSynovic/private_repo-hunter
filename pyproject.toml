@@ -8,6 +8,7 @@ dependencies = [
     "ghapi>=1.0.13",
     "pandas>=3.0.2",
     "progress>=1.6.1",
+    "pydantic>=2.13.3",
     "requests>=2.33.1",
     "sqlalchemy>=2.0.49",
 ]
