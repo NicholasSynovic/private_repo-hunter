@@ -62,7 +62,16 @@ class Issue(BaseModel):
 
     @log_method
     def extract_repository_url(self, body: str) -> None:
-        split_body: list[str] = body.splitlines()
+        # Handle issues with no body content
+        try:
+            split_body: list[str] = body.splitlines()
+        except AttributeError:
+            return
+
+        # Handle non-paper submission issues
+        if len(split_body) < 13:
+            return
+
         match = re.search(r'href="([^"]*)"', split_body[1])
         if match:
             self.repository_url = match.group(1)
