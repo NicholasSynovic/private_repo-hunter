@@ -18,10 +18,13 @@ class DB:
             "joss",
             self.metadata,
             Column("id", Integer, primary_key=True),
-            Column("issue_id", Boolean),
+            Column("issue_id", Integer),
+            Column("accepted", Boolean),
             Column("created_at", String),
             Column("closed_at", String),
             Column("labels", String),
+            Column("repository_url", String),
+            Column("paper_url", String),
             Column("raw_json", String),
         )
 
